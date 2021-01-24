@@ -1,0 +1,6 @@
+C:\Users\vysar\source\repos\PromotionEngine\PromotionEngine\bin\Debug\PromotionEngine.exe.config
+C:\Users\vysar\source\repos\PromotionEngine\PromotionEngine\bin\Debug\PromotionEngine.exe
+C:\Users\vysar\source\repos\PromotionEngine\PromotionEngine\bin\Debug\PromotionEngine.pdb
+C:\Users\vysar\source\repos\PromotionEngine\PromotionEngine\obj\Debug\PromotionEngine.csproj.CoreCompileInputs.cache
+C:\Users\vysar\source\repos\PromotionEngine\PromotionEngine\obj\Debug\PromotionEngine.exe
+C:\Users\vysar\source\repos\PromotionEngine\PromotionEngine\obj\Debug\PromotionEngine.pdb
