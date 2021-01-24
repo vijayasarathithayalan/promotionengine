@@ -4,6 +4,16 @@
     "C:\\Users\\vysar\\Source\\Repos\\promotionengine\\UnitTesting\\UnitTesting.csproj": {}
   },
   "projects": {
+    "C:\\Users\\vysar\\Source\\Repos\\promotionengine\\PromotionEngine\\PromotionEngine.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vysar\\Source\\Repos\\promotionengine\\PromotionEngine\\PromotionEngine.csproj",
+        "projectName": "PromotionEngine",
+        "projectPath": "C:\\Users\\vysar\\Source\\Repos\\promotionengine\\PromotionEngine\\PromotionEngine.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\vysar\\Source\\Repos\\promotionengine\\UnitTesting\\UnitTesting.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +37,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\vysar\\Source\\Repos\\promotionengine\\PromotionEngine\\PromotionEngine.csproj": {
+                "projectPath": "C:\\Users\\vysar\\Source\\Repos\\promotionengine\\PromotionEngine\\PromotionEngine.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

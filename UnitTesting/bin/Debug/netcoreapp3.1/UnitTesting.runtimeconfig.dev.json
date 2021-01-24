@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\vysar\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\vysar\\.nuget\\packages"
+    ]
+  }
+}
