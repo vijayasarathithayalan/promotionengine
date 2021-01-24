@@ -32,7 +32,7 @@ namespace UnitTesting
                 new Promotion(1, p1, 130, PromotionTypes.FLATRATE),
                 new Promotion(2, p2, 45, PromotionTypes.FLATRATE),
                 new Promotion(3, p3, 30, PromotionTypes.FLATRATE),
-                new Promotion(4, p4, 10, PromotionTypes.PERCENTAGE),
+                new Promotion(4, p4, 10, PromotionTypes.FLATPERCENTAGE),
             };
         }
         [TestMethod]
@@ -45,21 +45,9 @@ namespace UnitTesting
             Order items3 = new Order(3, new List<Product>() { new Product("C")});
             orders.AddRange(new Order[] { items1, items2, items3});
 
-            decimal cartTotal = 0M;
-            foreach (Order ord in orders)
-            {
-                int remainingQty = 0;
-                List<decimal> promoprices = promotions
-                    .Select(promo => PromotionChecker.GetTotalPrice(ord, promo, ref remainingQty))
-                    .ToList();
-                decimal origprice = ord.Products.Sum(x => x.Price);
-                decimal priceQty = ord.Products.Select(q => q.Price).FirstOrDefault();
-                decimal promoprice = promoprices.Sum();
-                cartTotal += promoprice + (remainingQty * priceQty);
-            }
-
-            Console.WriteLine("Total : " + cartTotal);
-            Assert.AreEqual(100M, cartTotal);
+            decimal expectedValue = 100M;
+            decimal actualValue = PromotionChecker.GetTotalPriceOfOrder(orders, promotions);
+            Assert.AreEqual(expectedValue, actualValue);
         }
         [TestMethod]
         public void ScenarioB()
@@ -70,22 +58,9 @@ namespace UnitTesting
             Order items2 = new Order(2, new List<Product>() { new Product("B"), new Product("B"), new Product("B"), new Product("B"), new Product("B") });
             Order items3 = new Order(3, new List<Product>() { new Product("C") });
             orders.AddRange(new Order[] { items1, items2, items3 });
-
-            decimal cartTotal = 0M;
-            foreach (Order ord in orders)
-            {
-                int remainingQty = 0;
-                List<decimal> promoprices = promotions
-                    .Select(promo => PromotionChecker.GetTotalPrice(ord, promo, ref  remainingQty))
-                    .ToList();
-                decimal origprice = ord.Products.Sum(x => x.Price);
-                decimal priceQty = ord.Products.Select(q => q.Price).FirstOrDefault();
-                decimal promoprice = promoprices.Sum();
-                cartTotal += promoprice + (remainingQty * priceQty);
-            }
-
-            Console.WriteLine("Total : " + cartTotal);
-            Assert.AreEqual(370M, cartTotal);
+            decimal expectedValue = 370M;
+            decimal actualValue = PromotionChecker.GetTotalPriceOfOrder(orders, promotions);
+            Assert.AreEqual(expectedValue, actualValue);
         }
         [TestMethod]
         public void ScenarioC()
@@ -96,22 +71,22 @@ namespace UnitTesting
             Order items2 = new Order(2, new List<Product>() { new Product("B"), new Product("B"), new Product("B"), new Product("B"), new Product("B") });
             Order items3 = new Order(3, new List<Product>() { new Product("C"), new Product("D") });
             orders.AddRange(new Order[] { items1, items2, items3 });
-
-            decimal cartTotal = 0M;
-            foreach (Order ord in orders)
-            {
-                int remainingQty = 0;
-                List<decimal> promoprices = promotions
-                    .Select(promo => PromotionChecker.GetTotalPrice(ord, promo, ref remainingQty))
-                    .ToList();
-                decimal origprice = ord.Products.Sum(x => x.Price);
-                decimal priceQty = ord.Products.Select(q => q.Price).FirstOrDefault();
-                decimal promoprice = promoprices.Sum();
-                cartTotal += promoprice + (remainingQty * priceQty);
-            }
-
-            Console.WriteLine("Total : " + cartTotal);
-            Assert.AreEqual(280M, cartTotal);
+            decimal expectedValue = 280M;
+            decimal actualValue = PromotionChecker.GetTotalPriceOfOrder(orders, promotions);
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+        [TestMethod]
+        public void ScenarioD()
+        {
+            //create orders
+            List<Order> orders = new List<Order>();
+            Order items1 = new Order(1, new List<Product>() { new Product("A"), new Product("A"), new Product("A") });
+            Order items2 = new Order(2, new List<Product>() { new Product("B"), new Product("B"), new Product("B"), new Product("B"), new Product("B") });
+            Order items3 = new Order(3, new List<Product>() { new Product("E"), new Product("E") , new Product("E") , new Product("E") , new Product("E") , new Product("E") });
+            orders.AddRange(new Order[] { items1, items2, items3 });
+            decimal expectedValue = 378M;
+            decimal actualValue = PromotionChecker.GetTotalPriceOfOrder(orders, promotions);
+            Assert.AreEqual(expectedValue, actualValue);
         }
     }
 }
